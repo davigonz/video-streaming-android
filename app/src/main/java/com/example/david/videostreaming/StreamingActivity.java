@@ -1,10 +1,8 @@
 package com.example.david.videostreaming;
 
 import android.net.Uri;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.SurfaceView;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -31,9 +29,6 @@ public class StreamingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_streaming);
-
-        // Create a default TrackSelector
-        Handler mainHandler = new Handler();
 
         // Estimates bandwidth
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -77,6 +72,7 @@ public class StreamingActivity extends AppCompatActivity {
         // Prepare the player with the source.
         player.prepare(videoSource);
 
+        // Start to play when player is ready
         player.setPlayWhenReady(true);
     }
 }
