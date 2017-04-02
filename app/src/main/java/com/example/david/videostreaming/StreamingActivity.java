@@ -27,8 +27,6 @@ import com.google.android.exoplayer2.util.Util;
 
 public class StreamingActivity extends AppCompatActivity {
 
-    private SimpleExoPlayer player;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +52,16 @@ public class StreamingActivity extends AppCompatActivity {
         // Controls buffering of media
         LoadControl loadControl = new DefaultLoadControl();
 
-        player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
+        SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
 
         SimpleExoPlayerView simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.video_player);
 
         // Bind the player to the view.
         simpleExoPlayerView.setPlayer(player);
 
-        // Create DataSource instance through which media data is loaded.
+        // DataSource instance through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
                 Util.getUserAgent(this, String.valueOf(R.string.app_name)));
-
 
         // Produces Extractor instances for parsing the media data.
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
@@ -73,7 +70,7 @@ public class StreamingActivity extends AppCompatActivity {
 
         Uri mp4VideoUri = Uri.parse(mp4VideoUrl);
 
-        // This is the MediaSource representing the media to be played.
+        // MediaSource representing the media to be played.
         MediaSource videoSource = new ExtractorMediaSource(mp4VideoUri,
                 dataSourceFactory, extractorsFactory, null, null);
 
