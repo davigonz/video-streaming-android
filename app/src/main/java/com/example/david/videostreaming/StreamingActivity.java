@@ -56,7 +56,7 @@ public class StreamingActivity extends AppCompatActivity {
 
         // DataSource instance through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, String.valueOf(R.string.app_name)));
+                Util.getUserAgent(this, getString(R.string.app_name)));
 
         // Produces Extractor instances for parsing the media data.
         ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
